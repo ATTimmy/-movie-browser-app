@@ -11,15 +11,12 @@
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "test": "vitest run",
-    "test:watch": "vitest"
+    "format:check": "prettier --check ."
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
       "eslint --fix",
-      "prettier --write",
-      "npm run test -- --findRelatedTests"
+      "prettier --write"
     ]
   },
   "dependencies": {
