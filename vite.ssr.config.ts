@@ -7,7 +7,7 @@ export default defineConfig({
     ssr: true,
     outDir: 'dist/server',
     rollupOptions: {
-      input: './src/Server/server.tsx',
+      input: './src/Server/Server.tsx',
     },
   },
 });
