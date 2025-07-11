@@ -14,7 +14,7 @@ export default [
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
-        project: './tsconfig.app.json',
+        project: ['./tsconfig.app.json', './tsconfig.server.json'],
         ecmaVersion: 'latest',
         sourceType: 'module',
         ecmaFeatures: {
@@ -28,16 +28,16 @@ export default [
       'react-hooks': reactHooks,
     },
     rules: {
-      'react/react-in-jsx-scope': 'off', 
+      'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
       '@typescript-eslint/explicit-function-return-type': 'off',
       'react/destructuring-assignment': ['warn', 'always'],
       'react-hooks/exhaustive-deps': 'off',
       'react-hooks/rules-of-hooks': 'error',
-      'no-console': 'warn',
-      'eqeqeq': ['error', 'always'],
-      'curly': 'error',
+      'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
+      eqeqeq: ['error', 'always'],
+      curly: 'error',
       'prefer-const': 'error',
       'no-var': 'error',
       'no-duplicate-imports': 'error',

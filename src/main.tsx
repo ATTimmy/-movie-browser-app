@@ -1,13 +1,16 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
+import { StrictMode } from 'react';
+import { hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import './styles/main.scss';
 
-createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+// Hydrate the app on the client using the server-rendered HTML in #root.
+// Wrap with BrowserRouter to enable client-side routing.
+hydrateRoot(
+  document.getElementById('root')!,
+  <StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </React.StrictMode>
+  </StrictMode>
 );

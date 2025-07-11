@@ -1,3 +1,3 @@
 export default function Home() {
-  return <h1>Welcome to Movie Browser App</h1>;
+  return <h1>Welcome to Movie Browser App!</h1>;
 }
