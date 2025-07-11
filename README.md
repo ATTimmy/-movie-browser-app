@@ -12,20 +12,9 @@ Movie Browser App is a modern web app that fetches and displays movie data. It's
 
 ---
 
-## 🧪 Scripts
+## 📦 Release Notes
 
-| Script                  | Description                    |
-| ----------------------- | ------------------------------ |
-| `npm run dev`           | Run Vite in dev mode           |
-| `npm run build`         | Build client bundle            |
-| `npm run build:ssr`     | Build SSR bundle               |
-| `npm run start`         | Run Express server with SSR    |
-| `npm run test`          | Run all tests (Vitest + jsdom) |
-| `npm run test:coverage` | Run tests with coverage report |
-| `npm run lint`          | Run ESLint                     |
-| `npm run lint:fix`      | Fix lint issues                |
-| `npm run format`        | Format code with Prettier      |
-| `npm run format:check`  | Check formatting               |
+For full version history, see [`releaseNotes.md`](./releaseNotes.md)
 
 ---
 
@@ -39,6 +28,25 @@ Movie Browser App is a modern web app that fetches and displays movie data. It's
 - **Vitest + Testing Library** – Unit testing with jsdom
 - **Husky + lint-staged** – Pre-commit hooks: lint + test
 - **GitHub Actions** – CI pipeline with formatting/linting/build/test
+
+---
+
+## 🧪 Scripts
+
+| Script                  | Description                              |
+| ----------------------- | ---------------------------------------- |
+| `npm run dev`           | Run Vite in development mode             |
+| `npm run build`         | Build the client bundle                  |
+| `npm run build:ssr`     | Build the server-side (SSR) bundle       |
+| `npm run start`         | Start Express server with SSR output     |
+| `npm run preview`       | Preview static client build (non-SSR)    |
+| `npm run test`          | Run all unit/component tests with Vitest |
+| `npm run test:coverage` | Run tests with coverage report           |
+| `npm run lint`          | Run ESLint for static code analysis      |
+| `npm run lint:fix`      | Fix lint issues automatically            |
+| `npm run format`        | Format code using Prettier               |
+| `npm run format:check`  | Check if code is properly formatted      |
+| `npm run prepare`       | Install Husky and setup Git hooks        |
 
 ---
 
