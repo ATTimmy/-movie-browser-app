@@ -4,9 +4,10 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: 'dist/client',
+    ssr: true,
+    outDir: 'dist/server',
     rollupOptions: {
-      input: './index.html',
+      input: './src/Server/server.tsx',
     },
   },
 });
