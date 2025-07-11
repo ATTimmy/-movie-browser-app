@@ -14,7 +14,7 @@ export default [
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
-        project: ['./tsconfig.app.json', './tsconfig.server.json'],
+        project: ['./tsconfig.app.json', './tsconfig.server.json', './tsconfig.vitest.json'],
         ecmaVersion: 'latest',
         sourceType: 'module',
         ecmaFeatures: {
