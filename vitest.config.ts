@@ -7,5 +7,21 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: './src/Config/setupTests.ts',
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'lcov'],
+      exclude: [
+        'dist/**',
+        'vite.config.*',
+        'vite.ssr.config.*',
+        'vitest.config.*',
+        'eslint.config.*',
+        'src/main.tsx',
+        'src/Server/Server.tsx',
+        'src/setupTests.ts',
+        '**/*.test.tsx',
+        '**/__tests__/**',
+      ],
+    },
   },
 });
