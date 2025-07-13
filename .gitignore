@@ -31,3 +31,6 @@ node_modules
 
 # Vitest
 vitest*.coverage*
+
+# Environment variables
+.env*
