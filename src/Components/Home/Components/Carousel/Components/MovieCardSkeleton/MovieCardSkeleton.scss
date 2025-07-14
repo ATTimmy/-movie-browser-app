@@ -1,0 +1,31 @@
+.skeleton {
+  animation: pulse 1.5s infinite;
+  background-color: #e0e0e0;
+}
+
+.imageSkeleton {
+  width: 100%;
+  height: 150px;
+  border-radius: 8px;
+  background: #ccc;
+}
+
+.titleSkeleton {
+  width: 250px;
+  height: 0.8rem;
+  margin-top: 0.4rem;
+  border-radius: 4px;
+  background: #bbb;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
