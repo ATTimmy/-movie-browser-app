@@ -2,11 +2,14 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import Header from './Header';
 import { WishlistProvider } from '../../Context/WishlistContext';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { MemoryRouter } from 'react-router';
 const renderWithContext = () =>
   render(
-    <WishlistProvider>
-      <Header />
-    </WishlistProvider>
+    <MemoryRouter>
+      <WishlistProvider>
+        <Header />
+      </WishlistProvider>
+    </MemoryRouter>
   );
 
 describe('Header component', () => {
