@@ -11,8 +11,6 @@ import {
 export default function Home() {
   return (
     <main className="container">
-      <h1 className="header">🎬 Movie Browser</h1>
-
       <section className="section">
         <Carousel title="Trending" fetchFn={fetchTrendingMovies} />
       </section>
