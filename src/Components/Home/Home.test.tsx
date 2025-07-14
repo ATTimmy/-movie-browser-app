@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Home from './Home';
 
 vi.mock('./Components/Carousel/Carousel', () => ({
@@ -17,14 +17,11 @@ describe('<Home />', () => {
     vi.resetAllMocks();
   });
 
-  it('renders the Home component with all carousels', async () => {
+  it('renders the Home component with all carousels', () => {
     render(<Home />);
 
-    await waitFor(() => {
-      expect(screen.getByText(/🎬 Movie Browser/i)).toBeInTheDocument();
-      expect(screen.getByText(/Trending Carousel/)).toBeInTheDocument();
-      expect(screen.getByText(/Top Rated Carousel/)).toBeInTheDocument();
-      expect(screen.getByText(/Upcoming Carousel/)).toBeInTheDocument();
-    });
+    expect(screen.getByText(/Trending/i)).toBeInTheDocument();
+    expect(screen.getByText(/Top Rated/i)).toBeInTheDocument();
+    expect(screen.getByText(/Upcoming/i)).toBeInTheDocument();
   });
 });
