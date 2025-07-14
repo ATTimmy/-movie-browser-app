@@ -6,18 +6,30 @@ export function useCarouselMovies(fetchFn: () => Promise<{ results: Movie[] }>) 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let isMounted = true;
+
     const loadMovies = async () => {
       try {
         const res = await fetchFn();
-        setMovies(res.results);
+        if (isMounted) {
+          setMovies(res.results);
+        }
       } catch (error) {
-        console.error('Failed to load movies', error);
+        if (isMounted) {
+          console.error('Failed to load movies', error);
+        }
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
     loadMovies();
+
+    return () => {
+      isMounted = false;
+    };
   }, [fetchFn]);
 
   return { movies, loading };
