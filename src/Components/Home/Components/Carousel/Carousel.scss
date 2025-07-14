@@ -1,0 +1,75 @@
+%flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+%button-base {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.carousel {
+  position: relative;
+  padding: 1rem 0;
+
+  .carouselTitle {
+    @extend %flex-center;
+    justify-content: left;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000000;
+  }
+
+  .controls {
+    position: absolute;
+    top: 45%;
+    width: 100%;
+    @extend %flex-center;
+    justify-content: space-between;
+    pointer-events: none;
+
+    button {
+      @extend %button-base;
+      background: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      font-size: 1.2rem;
+      padding: 0.4rem 0.6rem;
+      pointer-events: all;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.6);
+      }
+    }
+  }
+
+  .track {
+    display: flex;
+    gap: 0.75rem;
+    overflow: hidden;
+    padding-bottom: 0.5rem;
+  }
+
+  .dots {
+    @extend %flex-center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+
+    button {
+      @extend %button-base;
+      font-size: 1.5rem;
+      color: #888;
+
+      &.dotActive {
+        color: #222;
+      }
+
+      &:hover {
+        color: #555;
+      }
+    }
+  }
+}
