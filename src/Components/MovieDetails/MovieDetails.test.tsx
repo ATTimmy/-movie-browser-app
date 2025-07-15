@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import MovieDetails from './MovieDetails';
 import { WishlistProvider } from '../../Context/WishlistContext';
 import { vi, type Mock } from 'vitest';
 import * as hook from './Hooks/useMovieDetails';
+import MovieDetails from './MovieDetails';
 
 const mockMovie = {
   id: 1,
@@ -50,7 +50,7 @@ describe('<MovieDetails />', () => {
     expect(screen.getByText(/movie not found/i)).toBeInTheDocument();
   });
 
-  it('renders movie details correctly', () => {
+  it('renders movie details using subcomponents', () => {
     (hook.useMovieDetails as Mock).mockReturnValue({ movie: mockMovie, loading: false });
     renderWithProviders();
 

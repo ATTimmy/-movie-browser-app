@@ -1,8 +1,8 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import AddToWishlistButton from './AddToWishlistButton';
-import { WishlistProvider } from '../../../Context/WishlistContext';
-import type { Movie } from '../../Home/Types/movie.types';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { WishlistProvider } from '../../../../Context/WishlistContext';
+import type { Movie } from '../../../Home/Types/movie.types';
 
 const mockMovie: Movie = {
   id: 1,
