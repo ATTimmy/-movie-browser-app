@@ -13,7 +13,6 @@
 
 .carousel {
   position: relative;
-  padding: 1rem 0;
 
   .carouselTitle {
     @extend %flex-center;
@@ -36,12 +35,19 @@
       @extend %button-base;
       background: rgba(0, 0, 0, 0.4);
       color: #fff;
-      font-size: 1.2rem;
-      padding: 0.4rem 0.6rem;
+      font-size: 1.4rem;
+      padding: 0.4rem 0.5rem;
+      border-radius: 50%;
       pointer-events: all;
+      z-index: 2;
+      width: 40px;
 
       &:hover {
         background: rgba(0, 0, 0, 0.6);
+      }
+
+      svg {
+        font-size: 1rem;
       }
     }
   }
@@ -60,15 +66,18 @@
 
     button {
       @extend %button-base;
-      font-size: 1.5rem;
-      color: #888;
 
-      &.dotActive {
-        color: #222;
+      svg {
+        font-size: 0.65rem;
+        color: #888;
+
+        &:hover {
+          color: #555;
+        }
       }
 
-      &:hover {
-        color: #555;
+      &.dotActive svg {
+        color: #222;
       }
     }
   }
