@@ -24,8 +24,8 @@ describe('<App />', () => {
     expect(screen.getByText(/Upcoming/i)).toBeInTheDocument();
   });
 
-  it('renders MovieDetails at "/movie/:category/:id" route and shows loading', () => {
+  it('renders MovieDetails at "/movie/:category/:id" route and shows skeleton', () => {
     renderWithRouter('/movie/trending/123');
-    expect(screen.getByText(/loading.../i)).toBeInTheDocument();
+    expect(document.querySelector('.skeleton-poster')).toBeInTheDocument();
   });
 });

@@ -1,6 +1,6 @@
 import { TMDB_IMAGE_BASE_URL } from '../../../../Api/Constants/apiConstants';
 import type { Movie } from '../../../Home/Types/movie.types';
-import AddToWishlistButton from '../AddToWishlistButton/AddToWishlistButton';
+import AddToWishlistButton from './AddToWishlistButton/AddToWishlistButton';
 import './Styles/MovieMainSection.scss';
 
 type Props = {

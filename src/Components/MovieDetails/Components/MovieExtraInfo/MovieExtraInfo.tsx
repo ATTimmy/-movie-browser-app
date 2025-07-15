@@ -1,4 +1,4 @@
-import './MovieExtraInfo.scss';
+import './Styles/MovieExtraInfo.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendar, faClock, faStar, faFilm } from '@fortawesome/free-solid-svg-icons';
 import type { Movie } from '../../../Home/Types/movie.types';

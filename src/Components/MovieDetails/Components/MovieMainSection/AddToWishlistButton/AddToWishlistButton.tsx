@@ -1,5 +1,5 @@
-import { useWishlist } from '../../../../Context/WishlistContext';
-import type { Movie } from '../../../Home/Types/movie.types';
+import { useWishlist } from '../../../../../Context/WishlistContext';
+import type { Movie } from '../../../../Home/Types/movie.types';
 import './AddToWishlistButton.scss';
 
 type Props = {
