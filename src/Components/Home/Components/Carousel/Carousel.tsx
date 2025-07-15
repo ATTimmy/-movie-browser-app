@@ -7,11 +7,17 @@ import { useCarouselMovies } from './Hooks/useCarouselMovies';
 import { handleScroll, scrollToIndex } from './Utils/scrollHelpers';
 import type { CarouselProps } from './Types/carousel.types';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faChevronLeft,
+  faChevronRight,
+  faCircle,
+  faCircleDot,
+} from '@fortawesome/free-solid-svg-icons';
+
 export default function Carousel({ title, fetchFn }: CarouselProps) {
   const trackRef = useRef<HTMLDivElement>(null);
-
   const [activeIndex, setActiveIndex] = useState(0);
-
   const { movies, loading } = useCarouselMovies(fetchFn);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -24,12 +30,13 @@ export default function Carousel({ title, fetchFn }: CarouselProps) {
 
       <div className="controls">
         <button onClick={() => scroll('left')} aria-label="Scroll Left">
-          ◀
+          <FontAwesomeIcon icon={faChevronLeft} />
         </button>
         <button onClick={() => scroll('right')} aria-label="Scroll Right">
-          ▶
+          <FontAwesomeIcon icon={faChevronRight} />
         </button>
       </div>
+
       {loading && (
         <div className="track" ref={trackRef}>
           {Array.from({ length: 10 }).map((_, index) => (
@@ -37,6 +44,7 @@ export default function Carousel({ title, fetchFn }: CarouselProps) {
           ))}
         </div>
       )}
+
       {!loading && (
         <>
           <div className="track" ref={trackRef}>
@@ -53,7 +61,7 @@ export default function Carousel({ title, fetchFn }: CarouselProps) {
                 onClick={() => scrollToIndex(trackRef.current, index, setActiveIndex)}
                 aria-label={`Go to movie ${index + 1}`}
               >
-                •
+                <FontAwesomeIcon icon={index === activeIndex ? faCircleDot : faCircle} />
               </button>
             ))}
           </div>

@@ -1,14 +1,15 @@
 import { useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
 import './Header.scss';
 import { useClickOutside } from './Hooks/useClickOutside';
 import { useWishlist } from '../../Context/WishlistContext';
+
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const { wishlist } = useWishlist();
+  const { wishlist, removeFromWishlist } = useWishlist();
   const navigate = useNavigate();
 
   const popoverRef = useRef<HTMLDivElement>(null);
@@ -34,7 +35,21 @@ export default function Header() {
                 <>
                   {wishlist.map((movie) => (
                     <div className="wishlist__item" key={movie.id}>
-                      {movie.title}
+                      <span
+                        className="wishlist__link"
+                        onClick={() => {
+                          navigate(`/movie/${movie.id}`);
+                          setIsOpen(false);
+                        }}
+                      >
+                        {movie.title}
+                      </span>
+                      <FontAwesomeIcon
+                        icon={faTrashAlt}
+                        className="wishlist__delete"
+                        onClick={() => removeFromWishlist(movie.id)}
+                        title="Remove from wishlist"
+                      />
                     </div>
                   ))}
                 </>

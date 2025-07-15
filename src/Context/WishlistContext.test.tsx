@@ -7,12 +7,9 @@ const wrapper = ({ children }: { children: React.ReactNode }) => (
 );
 
 describe('WishlistContext', () => {
-  it('returns initial wishlist from mock', () => {
+  it('returns an empty wishlist initially', () => {
     const { result } = renderHook(() => useWishlist(), { wrapper });
-    expect(result.current.wishlist).toEqual([
-      { id: 1, title: 'Inception' },
-      { id: 2, title: 'Interstellar' },
-    ]);
+    expect(result.current.wishlist).toEqual([]);
   });
 
   it('adds an item to the wishlist', () => {
@@ -25,18 +22,24 @@ describe('WishlistContext', () => {
     });
 
     expect(result.current.wishlist).toContainEqual(newMovie);
-    expect(result.current.wishlist.length).toBe(3);
+    expect(result.current.wishlist.length).toBe(1);
   });
 
   it('removes an item from the wishlist', () => {
     const { result } = renderHook(() => useWishlist(), { wrapper });
 
+    const newMovie: WishlistItem = { id: 4, title: 'Dunkirk' };
+
     act(() => {
-      result.current.removeFromWishlist(1);
+      result.current.addToWishlist(newMovie);
     });
 
-    expect(result.current.wishlist.find((m) => m.id === 1)).toBeUndefined();
-    expect(result.current.wishlist.length).toBe(1);
+    act(() => {
+      result.current.removeFromWishlist(newMovie.id);
+    });
+
+    expect(result.current.wishlist.find((m) => m.id === newMovie.id)).toBeUndefined();
+    expect(result.current.wishlist.length).toBe(0);
   });
 
   it('throws an error if used outside provider', () => {

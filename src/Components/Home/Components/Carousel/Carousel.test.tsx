@@ -3,10 +3,31 @@ import Carousel from './Carousel';
 import { vi } from 'vitest';
 import type { Movie } from '../../Types/movie.types';
 import { MemoryRouter } from 'react-router';
+import { WishlistProvider } from '../../../../Context/WishlistContext';
 
 const mockMovies: Movie[] = [
-  { id: 1, title: 'Movie One', poster_path: '', backdrop_path: '' },
-  { id: 2, title: 'Movie Two', poster_path: '', backdrop_path: '' },
+  {
+    id: 1,
+    title: 'Movie One',
+    poster_path: '/poster1.jpg',
+    backdrop_path: '/backdrop1.jpg',
+    overview: '',
+    release_date: '',
+    runtime: 0,
+    vote_average: 0,
+    genres: [],
+  },
+  {
+    id: 2,
+    title: 'Movie Two',
+    poster_path: '/poster2.jpg',
+    backdrop_path: '/backdrop2.jpg',
+    overview: '',
+    release_date: '',
+    runtime: 0,
+    vote_average: 0,
+    genres: [],
+  },
 ];
 
 beforeAll(() => {
@@ -16,23 +37,22 @@ beforeAll(() => {
   });
 });
 
+const renderWithProviders = (ui: React.ReactNode) =>
+  render(
+    <MemoryRouter>
+      <WishlistProvider>{ui}</WishlistProvider>
+    </MemoryRouter>
+  );
+
 describe('<Carousel />', () => {
   it('renders the carousel title', () => {
-    render(
-      <MemoryRouter>
-        <Carousel title="Top Rated" fetchFn={vi.fn()} />
-      </MemoryRouter>
-    );
+    renderWithProviders(<Carousel title="Top Rated" fetchFn={vi.fn()} />);
     expect(screen.getByText(/Top Rated/i)).toBeInTheDocument();
   });
 
   it('renders movies after loading', async () => {
     const fetchFn = vi.fn().mockResolvedValue({ results: mockMovies });
-    render(
-      <MemoryRouter>
-        <Carousel title="Trending" fetchFn={fetchFn} />
-      </MemoryRouter>
-    );
+    renderWithProviders(<Carousel title="Trending" fetchFn={fetchFn} />);
 
     await waitFor(() => {
       expect(screen.getByText('Movie One')).toBeInTheDocument();
@@ -42,11 +62,7 @@ describe('<Carousel />', () => {
 
   it('handles dot clicks', async () => {
     const fetchFn = vi.fn().mockResolvedValue({ results: mockMovies });
-    render(
-      <MemoryRouter>
-        <Carousel title="Dots" fetchFn={fetchFn} />
-      </MemoryRouter>
-    );
+    renderWithProviders(<Carousel title="Dots" fetchFn={fetchFn} />);
 
     const dots = await screen.findAllByRole('button', { name: /Go to movie/i });
 
@@ -59,11 +75,7 @@ describe('<Carousel />', () => {
 
   it('calls scroll on arrow click', async () => {
     const fetchFn = vi.fn().mockResolvedValue({ results: mockMovies });
-    render(
-      <MemoryRouter>
-        <Carousel title="Arrows" fetchFn={fetchFn} />
-      </MemoryRouter>
-    );
+    renderWithProviders(<Carousel title="Arrows" fetchFn={fetchFn} />);
 
     const rightArrow = screen.getByLabelText('Scroll Right');
 

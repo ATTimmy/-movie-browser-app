@@ -3,6 +3,10 @@
   color: white;
   width: 100%;
   padding: 1rem 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
 
   .header__container {
     max-width: 100%;
@@ -58,8 +62,42 @@
     }
 
     .wishlist__item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
       padding: 0.5rem 0;
       border-bottom: 1px solid #ddd;
+
+      span {
+        flex: 1;
+        font-size: 0.95rem;
+        color: #000;
+      }
+
+      .wishlist__delete {
+        color: #888;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: #e74c3c;
+        }
+      }
+    }
+
+    .wishlist__link {
+      flex: 1;
+      font-size: 0.95rem;
+      color: #007bff;
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: #0056b3;
+      }
     }
 
     .wishlist__empty {

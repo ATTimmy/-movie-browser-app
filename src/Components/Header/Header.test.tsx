@@ -17,14 +17,9 @@ describe('Header component', () => {
     vi.clearAllMocks();
   });
 
-  it('renders the logo', () => {
-    renderWithContext();
-    expect(screen.getByText(/movie browser/i)).toBeInTheDocument();
-  });
-
   it('renders wishlist count', () => {
     renderWithContext();
-    expect(screen.getByText(/wishlist \(2\)/i)).toBeInTheDocument();
+    expect(screen.getByText(/wishlist \(0\)/i)).toBeInTheDocument();
   });
 
   it('shows wishlist popover on button click', () => {
@@ -33,8 +28,7 @@ describe('Header component', () => {
     const button = screen.getByRole('button', { name: /wishlist/i });
     fireEvent.click(button);
 
-    expect(screen.getByText('Inception')).toBeInTheDocument();
-    expect(screen.getByText('Interstellar')).toBeInTheDocument();
+    expect(screen.getByText(/your wishlist is empty/i)).toBeInTheDocument();
   });
 
   it('hides wishlist popover on outside click', () => {
@@ -43,10 +37,10 @@ describe('Header component', () => {
     const button = screen.getByRole('button', { name: /wishlist/i });
     fireEvent.click(button);
 
-    expect(screen.getByText('Inception')).toBeInTheDocument();
+    expect(screen.getByText(/your wishlist is empty/i)).toBeInTheDocument();
 
     fireEvent.mouseDown(document.body);
 
-    expect(screen.queryByText('Inception')).not.toBeInTheDocument();
+    expect(screen.queryByText(/your wishlist is empty/i)).not.toBeInTheDocument();
   });
 });

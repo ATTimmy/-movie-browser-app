@@ -3,7 +3,7 @@ import { ENDPOINTS } from '../Constants/endpoints';
 
 const token = import.meta.env.VITE_TMDB_TOKEN;
 
-const fetchFromTMDB = async (endpoint: string) => {
+export default async function fetchFromTMDB(endpoint: string) {
   const res = await fetch(`${TMDB_BASE_URL}${endpoint}`, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -16,7 +16,7 @@ const fetchFromTMDB = async (endpoint: string) => {
   }
 
   return res.json();
-};
+}
 
 export const fetchTrendingMovies = () => fetchFromTMDB(ENDPOINTS.MOVIES_TRENDING);
 export const fetchTopRatedMovies = () => fetchFromTMDB(ENDPOINTS.MOVIES_TOP_RATED);
