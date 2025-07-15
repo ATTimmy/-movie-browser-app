@@ -1,17 +1,58 @@
 .card {
   flex: 0 0 auto;
-  width: 250px;
+  width: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  padding-bottom: 0.25rem;
+  position: relative;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  }
+
   .image {
     width: 100%;
-    height: 150px;
-    border-radius: 8px;
-    object-fit: cover;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    height: 250px;
+    object-fit: contain;
+    display: block;
   }
+
+  .wishlist-icon {
+    position: absolute;
+    top: 17px;
+    right: 4px;
+    font-size: 1.2rem;
+    color: #ccc;
+    z-index: 1;
+    transition:
+      color 0.2s ease,
+      opacity 0.2s ease;
+    opacity: 0;
+    cursor: pointer;
+
+    &.active {
+      color: #f5c518;
+      opacity: 1;
+    }
+
+    &:hover {
+      color: #f5c518;
+    }
+  }
+
+  &:hover .wishlist-icon {
+    opacity: 1;
+  }
+
   .MovieCardTitle {
     margin-top: 0.4rem;
     font-size: 0.85rem;
@@ -21,5 +62,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    padding: 0 0.5rem 0.5rem;
   }
 }

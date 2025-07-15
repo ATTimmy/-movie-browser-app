@@ -21,6 +21,8 @@ export default defineConfig({
         'src/setupTests.ts',
         '**/*.test.tsx',
         '**/__tests__/**',
+        'src/Mocks/**',
+        'src/Routes/**',
       ],
     },
   },

@@ -1,5 +1,4 @@
 import { createContext, useContext, useState, type ReactNode } from 'react';
-import { mockWishlist } from '../Mocks/wishlist.mock';
 
 export type WishlistItem = {
   id: number;
@@ -15,7 +14,7 @@ type WishlistContextType = {
 const WishlistContext = createContext<WishlistContextType | undefined>(undefined);
 
 export function WishlistProvider({ children }: { children: ReactNode }) {
-  const [wishlist, setWishlist] = useState<WishlistItem[]>(mockWishlist);
+  const [wishlist, setWishlist] = useState<WishlistItem[]>([]);
 
   const addToWishlist = (movie: WishlistItem) => {
     setWishlist((prev) => [...prev, movie]);
