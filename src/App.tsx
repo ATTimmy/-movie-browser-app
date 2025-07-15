@@ -10,7 +10,7 @@ export default function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/movie/:id" element={<MovieDetails />} />
+        <Route path="/movie/:category/:id" element={<MovieDetails />} />
       </Routes>
     </WishlistProvider>
   );

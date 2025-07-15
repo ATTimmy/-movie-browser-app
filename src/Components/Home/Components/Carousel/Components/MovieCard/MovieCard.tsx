@@ -10,9 +10,10 @@ import { toggleWishlistHandler } from '../../../../../../Context/Utils/toggleWis
 
 type Props = {
   movie: Movie;
+  category: string;
 };
 
-export default function MovieCard({ movie }: Props) {
+export default function MovieCard({ movie, category }: Props) {
   const navigate = useNavigate();
   const { wishlist, addToWishlist, removeFromWishlist } = useWishlist();
 
@@ -22,7 +23,7 @@ export default function MovieCard({ movie }: Props) {
     `${TMDB_IMAGE_BASE_URL}${size}${path}`;
 
   const handleClick = () => {
-    navigate(`/movie/${movie.id}`);
+    navigate(`/movie/${category}/${movie.id}`);
   };
 
   const toggleWishlist = (e: React.MouseEvent) => {

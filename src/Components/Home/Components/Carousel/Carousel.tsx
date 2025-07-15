@@ -15,7 +15,7 @@ import {
   faCircleDot,
 } from '@fortawesome/free-solid-svg-icons';
 
-export default function Carousel({ title, fetchFn }: CarouselProps) {
+export default function Carousel({ title, fetchFn, category }: CarouselProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const { movies, loading } = useCarouselMovies(fetchFn);
@@ -49,7 +49,7 @@ export default function Carousel({ title, fetchFn }: CarouselProps) {
         <>
           <div className="track" ref={trackRef}>
             {movies.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} />
+              <MovieCard key={movie.id} movie={movie} category={category} />
             ))}
           </div>
 

@@ -1,0 +1,64 @@
+%movie-main-theme-base {
+  .movie-details__title,
+  .movie-details__overview {
+    color: #f0f0f0;
+  }
+
+  .movie-details__info button {
+    width: fit-content;
+    max-width: 100%;
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+}
+
+.movie-details--trending {
+  @extend %movie-main-theme-base;
+
+  background-color: rgba(255, 0, 0, 0.1);
+  background-image: linear-gradient(rgba(255, 0, 0, 0.3), rgba(0, 0, 0, 0.85)), var(--backdrop-url);
+
+  .movie-details__info button {
+    background-color: #f5c518;
+    color: #111;
+  }
+}
+
+.movie-details--toprated {
+  @extend %movie-main-theme-base;
+
+  background-color: rgba(255, 182, 193, 0.1);
+  background-image:
+    linear-gradient(rgba(255, 182, 193, 0.35), rgba(0, 0, 0, 0.9)), var(--backdrop-url);
+
+  .movie-details__title,
+  .movie-details__overview {
+    color: #ebb8cb;
+  }
+
+  .movie-details__info button {
+    background-color: #ff69b4;
+    color: #fff;
+  }
+}
+
+.movie-details--upcoming {
+  @extend %movie-main-theme-base;
+
+  background-color: rgba(0, 128, 0, 0.1);
+  background-image: linear-gradient(rgba(0, 128, 0, 0.35), rgba(0, 0, 0, 0.9)), var(--backdrop-url);
+
+  .movie-details__title,
+  .movie-details__overview {
+    color: #39d175;
+  }
+
+  .movie-details__info button {
+    background-color: #27ae60;
+    color: #fff;
+  }
+}

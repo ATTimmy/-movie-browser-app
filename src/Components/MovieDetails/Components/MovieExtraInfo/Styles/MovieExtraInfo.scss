@@ -1,0 +1,23 @@
+@use './MovieExtraInfo.theme.scss' as *;
+
+.movie-details__extra {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.95rem;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #1c1c1c;
+    color: #f0f0f0;
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    font-weight: 500;
+
+    svg {
+      color: #ffcc00;
+    }
+  }
+}

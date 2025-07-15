@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import MovieDetails from './MovieDetails';
 import { WishlistProvider } from '../../Context/WishlistContext';
 import { vi, type Mock } from 'vitest';
 import * as hook from './Hooks/useMovieDetails';
+import MovieDetails from './MovieDetails';
 
 const mockMovie = {
   id: 1,
@@ -38,19 +38,19 @@ function renderWithProviders(route: string = '/movie/1') {
 }
 
 describe('<MovieDetails />', () => {
-  it('renders loading state', () => {
+  it('renders skeleton while loading', () => {
     (hook.useMovieDetails as Mock).mockReturnValue({ movie: null, loading: true });
     renderWithProviders();
-    expect(screen.getByText(/loading/i)).toBeInTheDocument();
+    expect(document.querySelector('.skeleton-poster')).toBeInTheDocument();
   });
 
-  it('renders fallback if movie is not found', () => {
+  it('renders nothing if movie is not found', () => {
     (hook.useMovieDetails as Mock).mockReturnValue({ movie: null, loading: false });
-    renderWithProviders();
-    expect(screen.getByText(/movie not found/i)).toBeInTheDocument();
+    const { container } = renderWithProviders();
+    expect(container).toBeEmptyDOMElement();
   });
 
-  it('renders movie details correctly', () => {
+  it('renders movie details using subcomponents', () => {
     (hook.useMovieDetails as Mock).mockReturnValue({ movie: mockMovie, loading: false });
     renderWithProviders();
 

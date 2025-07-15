@@ -32,7 +32,7 @@ describe('<MovieCard />', () => {
     render(
       <MemoryRouter>
         <WishlistProvider>
-          <MovieCard movie={mockMovie} />
+          <MovieCard movie={mockMovie} category="trending" />
         </WishlistProvider>
       </MemoryRouter>
     );
@@ -47,7 +47,7 @@ describe('<MovieCard />', () => {
     render(
       <MemoryRouter>
         <WishlistProvider>
-          <MovieCard movie={mockMovie} />
+          <MovieCard movie={mockMovie} category="trending" />
         </WishlistProvider>
       </MemoryRouter>
     );
@@ -59,7 +59,7 @@ describe('<MovieCard />', () => {
     render(
       <MemoryRouter>
         <WishlistProvider>
-          <MovieCard movie={mockMovie} />
+          <MovieCard movie={mockMovie} category="trending" />
         </WishlistProvider>
       </MemoryRouter>
     );
@@ -72,7 +72,7 @@ describe('<MovieCard />', () => {
     render(
       <MemoryRouter>
         <WishlistProvider>
-          <MovieCard movie={mockMovie} />
+          <MovieCard movie={mockMovie} category="trending" />
         </WishlistProvider>
       </MemoryRouter>
     );
@@ -87,7 +87,7 @@ describe('<MovieCard />', () => {
     render(
       <MemoryRouter>
         <WishlistProvider>
-          <MovieCard movie={mockMovie} />
+          <MovieCard movie={mockMovie} category="trending" />
         </WishlistProvider>
       </MemoryRouter>
     );
@@ -95,6 +95,6 @@ describe('<MovieCard />', () => {
     const card = screen.getByRole('button');
     fireEvent.click(card);
 
-    expect(mockNavigate).toHaveBeenCalledWith(`/movie/${mockMovie.id}`);
+    expect(mockNavigate).toHaveBeenCalledWith(`/movie/trending/${mockMovie.id}`);
   });
 });

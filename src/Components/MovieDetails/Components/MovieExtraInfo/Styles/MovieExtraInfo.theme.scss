@@ -1,0 +1,37 @@
+.movie-details__extra {
+  &.movie-details--trending {
+    background: none;
+    span {
+      background-color: #2c2c2c;
+      color: #f0f0f0;
+
+      svg {
+        color: #f5c518;
+      }
+    }
+  }
+
+  &.movie-details--toprated {
+    background: none;
+    span {
+      background-color: #ff69b4;
+      color: white;
+
+      svg {
+        color: white;
+      }
+    }
+  }
+
+  &.movie-details--upcoming {
+    background: none;
+    span {
+      background-color: #27ae60;
+      color: white;
+
+      svg {
+        color: white;
+      }
+    }
+  }
+}
