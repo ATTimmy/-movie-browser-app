@@ -6,14 +6,72 @@ This document contains the version history of the project.
 
 ## 📄 Version Index
 
+- [v1.0.0 – Movie Details, Wishlist & Visual Themes](#v100--movie-details-wishlist--visual-themes)
 - [v0.2.0 – Home Page & Core Movie Features](#v020--home-page--core-movie-features)
 - [v0.1.0 – Project Foundation](#v010--project-foundation)
 
 ---
 
+## 🍿 v1.0.0 – Movie Details, Wishlist & Visual Themes
+
+This release introduces the full **Movie Details experience**, category-based visual themes, enhanced loading/error states, and dynamic wishlist interaction. All feature work is covered by unit tests and adheres to SSR compatibility.
+
+---
+
+### ✅ User Stories and Tasks
+
+#### 🟩 GB#31 – Create MovieDetails component and route setup
+
+- GB#311 – Create `MovieDetails.tsx` inside `Components/MovieDetails/`
+- GB#312 – Add a new route `/movie/:category/:id` in `App.tsx`
+- GB#313 – Enable navigation from `MovieCard` using `useNavigate`
+- GB#314 – Add unit tests for route and initial render
+
+#### 🟩 GB#32 – Fetch and display movie data
+
+- GB#321 – Use TheMovieDB API to fetch movie details by ID
+- GB#322 – Display poster, backdrop, title, and overview in layout
+- GB#323 – Add unit tests for data fetching and rendering
+- Add dynamic backdrop background with gradient layer
+- Apply consistent layout spacing with responsive container
+- Handle loading and fallback states gracefully
+- Validate `useMovieDetails` hook and render behavior
+- Add FontAwesome icons for release date, duration, rating, and genres
+- Style `.movie-details__extra` layout with tokens and icons
+
+#### 🟩 GB#33 – Add "Add to Wishlist" button
+
+- GB#331 – Integrate `WishlistContext` to allow adding/removing movies
+- Create reusable `toggleWishlistHandler()` util
+- Add support in `<MovieCard />` and `<MovieDetails />`
+- GB#332 – Disable button or show feedback if already in wishlist
+- Toggle solid/regular star icon in `<MovieCard />`
+- Star stays visible if item is in wishlist
+- GB#333 – Add unit tests for wishlist interaction
+- Test context add/remove logic
+- Validate `<MovieCard />` interaction
+- Add trash icon (🗑️) to wishlist items for removing entries
+- Add wishlist link behavior to navigate to movie details
+
+#### 🟩 GB#34 – Apply dynamic styles by category
+
+- GB#341 – Use category info (Trending, Top Rated, Upcoming) to adjust styling
+  - Fonts
+  - Button style
+  - Optional layout changes
+- GB#342 – Add unit tests for category-based styling
+
+#### 🟩 GB#35 – Add loading and error state handling
+
+- GB#351 – Show skeleton or loading UI while fetching
+- GB#352 – Gracefully handle errors (e.g. movie not found)
+- GB#353 – Add unit tests for loading and error behavior
+
+---
+
 ## 🎬 v0.2.0 – Home Page & Core Movie Features
 
-This release delivers the core **Home experience** for the Movie Browser App. It includes a fully styled and responsive header with wishlist integration, horizontal carousels for movie categories, and complete API integration to fetch trending, top-rated, and upcoming titles. These features are modular, test-covered, and SSR-ready, forming the interactive backbone of the application.
+This release delivers the core **Home experience** for the Movie Browser App. It includes a fully styled and responsive header with wishlist integration, horizontal carousels for movie categories, Qand complete API integration to fetch trending, top-rated, and upcoming titles. These features are modular, test-covered, and SSR-ready, forming the interactive backbone of the application.
 
 ---
 

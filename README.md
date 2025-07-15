@@ -1,14 +1,56 @@
 # 🎬 Movie Browser App
 
-> A React + TypeScript app with Server-Side Rendering, modular routing, Vitest tests, GitHub Actions CI/CD, and a clean development workflow.
+> A React + TypeScript app with Server-Side Rendering, modular routing, testing, CI/CD, and a clean development workflow.
 
-![CI](https://github.com/ATTimmy/-movie-browser-app/actions/workflows/ci.yml)
+![CI Badge](https://github.com/ATTimmy/-movie-browser-app/actions/workflows/ci.yml/badge.svg)
 
 ---
 
 ## 🧠 Overview
 
 Movie Browser App is a modern web app that fetches and displays movie data. It's optimized for fast loading, developer productivity, and clean code architecture.
+
+---
+
+## 🚀 Getting Started
+
+### 🔧 Development
+
+1. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+2. **Start development server**
+
+   ```bash
+   npm run dev
+   ```
+
+3. **Preview static client build**
+
+   ```bash
+   npm run preview
+   ```
+
+---
+
+### 🌍 Server-Side Rendering (SSR)
+
+1. **Build SSR bundle**
+
+   ```bash
+   npm run build:ssr
+   ```
+
+2. **Start SSR server**
+
+   ```bash
+   npm run start
+   ```
+
+This uses Express to render pages on the server using `renderToString()` and hydrate them on the client.
 
 ---
 
@@ -28,10 +70,11 @@ For full version history, see [`releaseNotes.md`](./releaseNotes.md)
 - **Vitest + Testing Library** – Unit testing with jsdom
 - **Husky + lint-staged** – Pre-commit hooks: lint + test
 - **GitHub Actions** – CI pipeline with formatting/linting/build/test
+- **Express + Hydration** – SSR rendering with dynamic routing
 
 ---
 
-## 🧪 Scripts
+## 🤪 Scripts
 
 | Script                  | Description                              |
 | ----------------------- | ---------------------------------------- |
@@ -50,7 +93,7 @@ For full version history, see [`releaseNotes.md`](./releaseNotes.md)
 
 ---
 
-## 🔁 Branching Strategy
+## 🔀 Branching Strategy
 
 - `main` – Stable production-ready branch
 - `develop` – Integration branch
@@ -63,7 +106,7 @@ For full version history, see [`releaseNotes.md`](./releaseNotes.md)
 Configured in `src/Routes/index.tsx`:
 
 - `/` → Home page
-- Additional routes (e.g. `/detail/:id`, `/wishlist`) will be modularized
+- `/movie/:category/:id` → Movie details page
 
 SSR uses `StaticRouter`, and the client uses `BrowserRouter`.
 
@@ -86,6 +129,7 @@ Hydration is delayed until JS loads, improving perceived performance.
 - `setupTests.ts` bootstraps Testing Library with `jsdom`
 - Full coverage with `vitest run --coverage`
 - Example: `Home.test.tsx` validates UI rendering
+- Mocks provided for `useNavigate`, API calls, and wishlist context
 
 ---
 
@@ -115,10 +159,28 @@ Tracks all features and tasks (GB# codes).
 
 ---
 
+## 📂 Project Structure
+
+```
+src/
+├── Components/
+│   ├── Home/
+│   ├── MovieDetails/
+│   ├── Header/
+│   └── ...
+├── Context/
+├── Styles/
+├── Api/
+├── Routes/
+├── Server/
+└── main.tsx
+```
+
+---
+
 ## 🧠 Extra Notes
 
 - Avoid `any`, use strict typing
 - Organize by features/components
 - Use `feature/*` naming aligned with `GB#` codes
-
---
+- Keep SSR-safe code clean (no `window`, `localStorage` in server paths)
